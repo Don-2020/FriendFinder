@@ -201,7 +201,7 @@
                     <div class="modal-header">
                         <h2 class="modal-title">Meet your Friend</h2>
                     </div>
-                    
+
                     <!-- modal body for match info -->
                     <div class="modal-body">
                         <h2 id="matchName"></h2>
@@ -210,7 +210,7 @@
 
                     <!-- modal footer -->
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal"></button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal"> close</button>
                     </div>
                 </div>
             </div>
@@ -232,6 +232,73 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
+    <!-- Javascript for submission -->
+    <script>
+        var fullyCompleted;
+
+        $(document).ready(function () {
+            // event listener for submission
+            $('#submitBtn').on('click', function () {
+
+                isItCompleted(function () {
+
+                    //proceed with AJAX call
+                    if(fullyCompleted){
+                        collectInputs();
+                    }
+                    else{
+                        alert('Please complete all fields!!')
+                    }
+                }); //end isItComplete
+            }); //end submit listener
+        }); // document ready
+
+        //validate user input
+        function isItCompleted(callback){
+
+            //Check through all the questions
+            var questionsCompleted
+            $('.form-control').each(function() {
+                if( $(this).val === ""){
+                    questionsCompleted = false;
+                }
+            })
+            .promise().done(function(){
+
+                // checks if any questions is incomplete
+                if(questionsCompleted === false){
+                    fullyCompleted = false;
+                }
+                
+                // Determine if name is enter
+                else if( $('#name').val().trim() === ""){
+                    fullyCompleted = false;
+                }
+
+                // determine if image is enter
+                else if( $('#photo').val().trim() === ""){
+                    fullyCompleted = false;
+                }
+                else{
+                    fullyCompleted = true;
+                }
+
+                callback();
+            }); 
+        }
+
+        function collectInputs(){
+            var newFriend = {
+                name: $('#name').val().trim(),
+                photo: $('#photo').val().trim(),
+                score: []
+            };
+
+            // loop thru questions to get score
+        }
+
+    </script>
 </body>
 
 </html>
