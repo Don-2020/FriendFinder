@@ -48,7 +48,7 @@
         <div class="form-group">
             <h3><strong>Question 2</strong></h3>
             <label for="question2">
-                <h4>Enjoy martials art</h4>
+                <h4>Enjoy martials art movies</h4>
             </label>
             <select class="form-control" id="question2">
                 <option value="empty"></option>
@@ -190,6 +190,30 @@
 
         <div class="text-center">
             <button id="submitBtn" type="submit" class="btn btn-success btn-lg">Submit</button>
+        </div>
+
+
+        <!-- Modal after survey -->
+        <div id="bestfriend" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- modal content -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title">Meet your Friend</h2>
+                    </div>
+                    
+                    <!-- modal body for match info -->
+                    <div class="modal-body">
+                        <h2 id="matchName"></h2>
+                        <img src="" alt="Image Not Found" id="matchImg" style="max-width: 350px;">
+                    </div>
+
+                    <!-- modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"></button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
