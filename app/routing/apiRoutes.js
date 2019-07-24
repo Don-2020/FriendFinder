@@ -1,6 +1,6 @@
 var friendInfo = require('../data/friend.js');
 
-function apiRoute(app) {
+function apiRoutes(app) {
     app.get('/api/friend', function (req, res) {
         res.jso(friendInfo)
     });
