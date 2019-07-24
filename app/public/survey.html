@@ -199,7 +199,7 @@
                 <!-- modal content -->
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h2 class="modal-title">Meet your Friend</h2>
+                        <h2 class="modal-title"><strong>Meet You New Friend</strong></h2>
                     </div>
 
                     <!-- modal body for match info -->
@@ -296,6 +296,22 @@
             };
 
             // loop thru questions to get score
+            var scoreArray = [];
+            $('.form-control').each(function(){
+                scoreArray.push(parseInt($(this).val));
+            })
+            .promise().done(function(){
+                newFriend.score = scoreArray
+                
+                var currentUrl = window.location.origin;
+                $.post(currentUrl + "/api/friends", newfriend, function(data){
+
+                    $('#matchName').text(data.name);
+                    $('#matchImg').attr('src', data.photo);
+
+                    $('#bestfriend').modal('toggle')
+                })
+            })
         }
 
     </script>
